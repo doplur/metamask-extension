@@ -253,9 +253,9 @@ export async function withInfuraClient(...args) {
 
   // Faking timers ends up doing two things:
   // 1. Halting the block tracker (which depends on `setTimeout` to periodically
-  //    request the latest block) set up in `eth-json-rpc-middleware`
-  // 2. Halting the retry logic in `eth-json-rpc-infura` (which also depends on
-  //    `setTimeout`)
+  // request the latest block) set up in `eth-json-rpc-middleware`
+  // 2. Halting the retry logic in `@metamask/eth-json-rpc-infura` (which also
+  // depends on `setTimeout`)
   const clock = sinon.useFakeTimers();
 
   try {
