@@ -2818,6 +2818,7 @@
         "@metamask/contract-metadata": true,
         "@metamask/controllers>abort-controller": true,
         "@metamask/controllers>async-mutex": true,
+        "@metamask/controllers>eth-json-rpc-infura": true,
         "@metamask/controllers>eth-method-registry": true,
         "@metamask/controllers>eth-phishing-detect": true,
         "@metamask/controllers>ethereumjs-wallet": true,
@@ -2831,7 +2832,6 @@
         "deep-freeze-strict": true,
         "eslint>fast-deep-equal": true,
         "eth-ens-namehash": true,
-        "eth-json-rpc-infura": true,
         "eth-keyring-controller": true,
         "eth-query": true,
         "eth-rpc-errors": true,
@@ -2864,6 +2864,33 @@
     "@metamask/controllers>async-mutex>tslib": {
       "globals": {
         "define": true
+      }
+    },
+    "@metamask/controllers>eth-json-rpc-infura": {
+      "globals": {
+        "setTimeout": true
+      },
+      "packages": {
+        "@metamask/controllers>eth-json-rpc-infura>eth-json-rpc-middleware": true,
+        "@metamask/controllers>eth-json-rpc-infura>eth-rpc-errors": true,
+        "@metamask/controllers>eth-json-rpc-infura>json-rpc-engine": true,
+        "node-fetch": true
+      }
+    },
+    "@metamask/controllers>eth-json-rpc-infura>eth-json-rpc-middleware": {
+      "packages": {
+        "safe-event-emitter": true
+      }
+    },
+    "@metamask/controllers>eth-json-rpc-infura>eth-rpc-errors": {
+      "packages": {
+        "eth-rpc-errors>fast-safe-stringify": true
+      }
+    },
+    "@metamask/controllers>eth-json-rpc-infura>json-rpc-engine": {
+      "packages": {
+        "@metamask/controllers>eth-json-rpc-infura>eth-rpc-errors": true,
+        "safe-event-emitter": true
       }
     },
     "@metamask/controllers>eth-method-registry": {
@@ -2996,6 +3023,7 @@
       },
       "packages": {
         "@ethereumjs/tx": true,
+        "@metamask/controllers>eth-json-rpc-infura": true,
         "@metamask/controllers>web3-provider-engine>backoff": true,
         "@metamask/controllers>web3-provider-engine>eth-block-tracker": true,
         "@metamask/controllers>web3-provider-engine>eth-json-rpc-middleware": true,
@@ -3007,7 +3035,6 @@
         "browserify>events": true,
         "browserify>util": true,
         "eth-json-rpc-filters": true,
-        "eth-json-rpc-infura": true,
         "gh-pages>async": true,
         "lavamoat>json-stable-stringify": true,
         "watchify>xtend": true
@@ -3487,11 +3514,11 @@
         "@metamask/controllers": true,
         "@metamask/providers>@metamask/object-multiplex": true,
         "@metamask/rpc-methods>@metamask/snap-utils": true,
+        "@metamask/rpc-methods>@metamask/utils": true,
         "@metamask/snap-controllers>@metamask/browser-passworder": true,
         "@metamask/snap-controllers>@metamask/execution-environments": true,
         "@metamask/snap-controllers>@metamask/obs-store": true,
         "@metamask/snap-controllers>@metamask/post-message-stream": true,
-        "@metamask/snap-controllers>@metamask/utils": true,
         "@metamask/snap-controllers>@xstate/fsm": true,
         "@metamask/snap-controllers>concat-stream": true,
         "@metamask/snap-controllers>gunzip-maybe": true,
@@ -3568,8 +3595,8 @@
         "removeEventListener": true
       },
       "packages": {
-        "@metamask/snap-controllers>@metamask/post-message-stream>readable-stream": true,
-        "@metamask/snap-controllers>@metamask/utils": true
+        "@metamask/rpc-methods>@metamask/utils": true,
+        "@metamask/snap-controllers>@metamask/post-message-stream>readable-stream": true
       }
     },
     "@metamask/snap-controllers>@metamask/post-message-stream>readable-stream": {
@@ -3590,11 +3617,6 @@
     "@metamask/snap-controllers>@metamask/post-message-stream>readable-stream>string_decoder": {
       "packages": {
         "@metamask/snap-controllers>json-rpc-middleware-stream>readable-stream>safe-buffer": true
-      }
-    },
-    "@metamask/snap-controllers>@metamask/utils": {
-      "packages": {
-        "eslint>fast-deep-equal": true
       }
     },
     "@metamask/snap-controllers>concat-stream": {
@@ -4817,9 +4839,17 @@
         "setTimeout": true
       },
       "packages": {
+        "eth-block-tracker>@metamask/utils": true,
         "eth-block-tracker>pify": true,
         "eth-query>json-rpc-random-id": true,
         "json-rpc-engine>@metamask/safe-event-emitter": true
+      }
+    },
+    "eth-block-tracker>@metamask/utils": {
+      "packages": {
+        "eslint>fast-deep-equal": true,
+        "eth-block-tracker>@metamask/utils>superstruct": true,
+        "madge>debug": true
       }
     },
     "eth-ens-namehash": {
@@ -4865,47 +4895,17 @@
         "eth-json-rpc-filters>json-rpc-engine": true
       }
     },
-    "eth-json-rpc-infura": {
-      "globals": {
-        "console.log": true,
-        "setTimeout": true
-      },
-      "packages": {
-        "browserify>process": true,
-        "eth-json-rpc-infura>eth-json-rpc-middleware": true,
-        "eth-json-rpc-infura>eth-rpc-errors": true,
-        "eth-json-rpc-infura>json-rpc-engine": true,
-        "node-fetch": true
-      }
-    },
-    "eth-json-rpc-infura>eth-json-rpc-middleware": {
-      "packages": {
-        "safe-event-emitter": true
-      }
-    },
-    "eth-json-rpc-infura>eth-rpc-errors": {
-      "packages": {
-        "eth-rpc-errors>fast-safe-stringify": true
-      }
-    },
-    "eth-json-rpc-infura>json-rpc-engine": {
-      "packages": {
-        "eth-json-rpc-infura>eth-rpc-errors": true,
-        "safe-event-emitter": true
-      }
-    },
     "eth-json-rpc-middleware": {
       "globals": {
         "URL": true,
         "btoa": true,
         "console.error": true,
-        "console.log": true,
         "fetch": true,
         "setTimeout": true
       },
       "packages": {
         "browserify>browser-resolve": true,
-        "browserify>process": true,
+        "eth-json-rpc-middleware>@metamask/utils": true,
         "eth-json-rpc-middleware>eth-sig-util": true,
         "eth-json-rpc-middleware>pify": true,
         "eth-rpc-errors": true,
@@ -4913,6 +4913,13 @@
         "json-rpc-engine>@metamask/safe-event-emitter": true,
         "lavamoat>json-stable-stringify": true,
         "vinyl>clone": true
+      }
+    },
+    "eth-json-rpc-middleware>@metamask/utils": {
+      "packages": {
+        "eslint>fast-deep-equal": true,
+        "eth-json-rpc-middleware>@metamask/utils>superstruct": true,
+        "madge>debug": true
       }
     },
     "eth-json-rpc-middleware>eth-sig-util": {
@@ -5152,12 +5159,9 @@
       }
     },
     "eth-query": {
-      "globals": {
-        "console.log": true
-      },
       "packages": {
-        "browserify>process": true,
         "eth-query>json-rpc-random-id": true,
+        "madge>debug": true,
         "watchify>xtend": true
       }
     },
