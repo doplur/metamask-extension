@@ -444,8 +444,6 @@
       "@storybook/core>@storybook/core-client>@storybook/ui>core-js-pure": false,
       "eth-json-rpc-filters>eth-json-rpc-middleware>ethereumjs-util>keccak": false,
       "eth-json-rpc-filters>eth-json-rpc-middleware>ethereumjs-util>secp256k1": false,
-      "eth-json-rpc-infura>eth-json-rpc-middleware>ethereumjs-util>keccak": false,
-      "eth-json-rpc-infura>eth-json-rpc-middleware>ethereumjs-util>secp256k1": false,
       "eth-json-rpc-middleware>eth-sig-util>ethereumjs-util>keccak": false,
       "eth-json-rpc-middleware>eth-sig-util>ethereumjs-util>secp256k1": false,
       "eth-lattice-keyring>gridplus-sdk": false,
